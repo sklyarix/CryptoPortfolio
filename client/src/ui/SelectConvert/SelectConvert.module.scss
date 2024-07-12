@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables';
+
+.currency-select{
+	&__control{
+		border: none !important;
+    background: transparent !important;
+		box-shadow: none !important;
+	}
+	
+	&__single-value{
+		color: $black !important;
+	}
+	&__indicator-separator{
+		display: none !important;
+	}
+	&__input-container, &__placeholder{
+		color: $black !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	&__placeholder{
+	
+	}
+	&__value-container{
+		padding: 0 !important;
+	}
+	&__indicator{
+		padding: 4px !important;
+		svg{
+			fill: $black;
+		}
+	}
+}
