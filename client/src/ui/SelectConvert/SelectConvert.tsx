@@ -7,14 +7,21 @@ interface Option {
 	value: string
 	label: string
 }
-
+/*
 const options: Option[] = [
 	{ value: 'Bitcoin', label: 'BTC' },
 	{ value: 'Ethereum', label: 'ETH' },
 	{ value: 'Tether', label: 'USDT' },
 ]
-
-const SelectConvert = () => {
+*/
+/*
+{
+	"name": "Bitcoin",
+	"price": 62642.0328024333,
+	"logo": "default_logo_url"
+}
+*/
+const SelectConvert = dataCurrency => {
 	const [selectedOption, setSelectedOption] = useState<{
 		value: string
 		label: string
