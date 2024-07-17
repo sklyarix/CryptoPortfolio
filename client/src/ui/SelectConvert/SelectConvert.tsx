@@ -1,36 +1,26 @@
-import { useState } from 'react'
+
 import Select from 'react-select'
 
 import styles from './SelectConvert.module.scss'
 
 interface Option {
-	value: string
-	label: string
+  value: string;
+  label: string;
 }
-/*
-const options: Option[] = [
-	{ value: 'Bitcoin', label: 'BTC' },
-	{ value: 'Ethereum', label: 'ETH' },
-	{ value: 'Tether', label: 'USDT' },
-]
-*/
-/*
-{
-	"name": "Bitcoin",
-	"price": 62642.0328024333,
-	"logo": "default_logo_url"
-}
-*/
-const SelectConvert = dataCurrency => {
-	const [selectedOption, setSelectedOption] = useState<{
-		value: string
-		label: string
-	} | null>(null)
 
+
+// @ts-ignore
+const SelectConvert = (data, value, setValue) =>  {
+	
+	const options: Option[] = data.map((coin) => ({
+    value: coin.name,
+    label: coin.slug,
+  }));
+	
 	return (
 		<>
 			<Select
-				placeholder={options[0].label}
+				placeholder={dataCurrency[0]?.name || 'Select currency'}
 				options={options}
 				className={styles.select}
 				classNamePrefix='currency-select'

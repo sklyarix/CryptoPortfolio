@@ -26,6 +26,7 @@ async function main() {
 
 			const coinData = data.data.slice(0, 10).map(coin => ({
 				name: coin.name,
+				slug: coin.symbol,
 				price: coin.quote.USD.price,
 				logo: coin.logo || 'default_logo_url',
 			}))
