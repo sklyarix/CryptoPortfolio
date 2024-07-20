@@ -1,18 +1,56 @@
-import Select from 'react-select'
-import { Coin } from '../../types/Coin.ts'
+	import Select, { type SingleValue } from 'react-select'
+	import { Coin } from '../../types/Coin.ts'
+	
+	import styles from './SelectConvert.module.scss'
+	
+	interface Option {
+		value: string
+		label: string
+	}
 
-import styles from './SelectConvert.module.scss'
-
-interface Option {
-	value: string
-	label: string
-}
-
-interface Props {
-	value: number
-	setValue: (value: number) => void
-	dataCoins: Coin[]
-}
+	// options: Option[];
+	
+	interface Props {
+		value: string
+		setValue: (value: string) => void
+		dataCoins: Coin[]
+	}
+	
+	const SelectConvert = ({ value, setValue, dataCoins }: Props) => {
+		const options: Option[] = dataCoins.map(coin => ({
+			value: coin.name,
+			label: coin.slug,
+		}))
+	
+		const getValue = () => {
+			return value ? options.find(c => c.value === value) : null
+		}
+	
+		const onChange = (newValue: SingleValue<Option>) => {
+			if (newValue) {
+				setValue(newValue.value)
+			}
+		}
+	
+	
+		return (
+			<>
+				<Select
+					//placeholder={'Select currency'}
+					options={options}
+					className={styles.select}
+					classNamePrefix='currency-select'
+					isSearchable={false}
+					value={getValue()}
+					defaultValue={getValue()}
+					onChange={onChange}
+				/>
+			</>
+		)
+	}
+	
+	export default SelectConvert
+	
 
 /*
 type SelectProps = {
@@ -25,39 +63,7 @@ type SelectProps = {
   onClose?: () => void;
 };
 */
-
-const SelectConvert = ({ value, setValue, dataCoins }: Props) => {
-	const options: Option[] = dataCoins.map(coin => ({
-		value: coin.name,
-		label: coin.slug,
-	}))
-
-	const getValue = () => {
-		return value ? options.find(coinSlug => +)
-	}
-
-	const onChange = (newValue: any) => {
-		setValue(newValue.value)
-	}
-
 	//const changeSelect = setValue(value => value)
-
-	return (
-		<>
-			<Select
-				placeholder={'Select currency'}
-				options={options}
-				className={styles.select}
-				classNamePrefix='currency-select'
-				isSearchable={false}
-				value={getValue}
-				onChange={onChange}
-			/>
-		</>
-	)
-}
-
-export default SelectConvert
 
 /*
 function MyButton() {
