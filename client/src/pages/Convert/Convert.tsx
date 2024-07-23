@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { LuArrowDownUp } from 'react-icons/lu'
-import GetCurrency from '../api/GetCurrency'
-import InputConvert from '../ui/Input/InputConvert.tsx'
-import { Coin } from '../types/Coin'
+import GetCurrency from '../../api/GetCurrency.tsx'
+import InputConvert from '../../ui/Input/InputConvert.tsx'
+import { Coin } from '../../types/Coin.ts'
 
-import SelectConvert from '../ui/SelectConvert/SelectConvert'
+import SelectConvert from '../../ui/SelectConvert/SelectConvert.tsx'
 
 import styles from "./Convert.module.scss"
 
