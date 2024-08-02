@@ -1,0 +1,70 @@
+import { useState } from 'react'
+import { useAuth } from '../../../hooks/useAuth.tsx'
+import loginService from '../../../services/loginService.tsx';
+
+
+const ModalLogin = () => {
+
+	
+	const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+	const { setIsAuth } = useAuth();
+	
+	
+	const handleSubmit = async e => {
+		e.preventDefault()
+				let user = { email, password }
+				const result = await loginService(user)
+				console.log(result)
+				if (result) {
+					setIsAuth(true);
+				} else {
+					console.log('Login failed');
+				}
+	}
+	return (
+		<>
+			Modal Login
+			<form onSubmit={handleSubmit}>
+				<label class="">
+					<span class="">Email</span>
+					<div class="">
+						<input
+							class=""
+							name="email"
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					</label>
+				<label class="">
+					<span class="">Password</span>
+					<div class="">
+						<input
+							class=""
+							name="password"
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					</label>
+				<button type="submit">Login</button>
+			</form>
+		</>
+	)
+}
+export default ModalLogin
+
+
+//import { useQuery } from '@tanstack/react-query'
+	/*
+	const { data, isLoading, error } = useQuery({
+		queryKey: ['login'],
+		queryFn: LoginService,
+	})
+	33421`*/
+	

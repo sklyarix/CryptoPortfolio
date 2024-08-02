@@ -41,7 +41,10 @@
 
 html,
 body {
-	height: 100%;
+}
+
+html{
+	font-size: 10px;
 }
 
 body {
@@ -49,7 +52,7 @@ body {
 	padding: 0;
 	margin: 0;
 	color: $white;
-	font-size: 20px;
+	font-size: 1.6rem;
 	min-width: 320px;
 	position: relative;
 	line-height: 1.65;

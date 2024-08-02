@@ -25,3 +25,10 @@ dist-ssr
 
 # Ignore JetBrains IDE files
 .idea/
+
+# Don't commit .env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
