@@ -1,40 +1,62 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../providers/AuthProvider.tsx'
-import styles from "./Header.module.scss";
+import userService from '../../services/userService.tsx'
+import { LuSettings } from 'react-icons/lu'
 
-const Header = ({onClickLoginModal, onClickRegisterModal}) => {
-	let {isAuth}  = useContext(AuthContext);
-	
-	/*
+import Cookies from 'js-cookie'
+import styles from './Header.module.scss'
+
+const Header = ({ onClickLoginModal, onClickRegisterModal }) => {
+	const [data, setData] = useState(null)
+	let { isAuth, setIsAuth } = useContext(AuthContext)
+
+	const getData = async () => {
+		const { data } = await userService()
+		const { user } = data
+		setData(user)
+	}
+
+	const onLogout = e => {
+		setIsAuth(false)
+		Cookies.remove('token')
+	}
+
 	useEffect(() => {
 		if (isAuth) {
-			console.log(isAuth);
+			getData()
 		}
 	}, [isAuth])
 
-	 */
-	
-	return(
+	return (
 		<header className={styles.header}>
-			<div className={styles['wrapper-btn']}>
-				
-				{ isAuth ? ( <div>Авторизирован</div> ) : ( <div>Не авторизирован</div> ) }
-				
-				<button
-					className={styles['btn-login']}
-					onClick={() => onClickLoginModal(true)}
-				>
-					Login
-				</button>
-				<button
-					className={styles['btn-register']}
-					onClick={() => onClickRegisterModal(true)}
-				>
-					Register
-				</button>
-			</div>
+			{isAuth ? (
+				<>
+					<div>{data?.name}</div>
+					<button className={styles['btn']} onClick={onLogout}>
+						Logout
+					</button>
+				</>
+			) : (
+				<>
+					<button>
+						<LuSettings />
+					</button>
+					<button
+						className={styles['btn-login']}
+						onClick={() => onClickLoginModal(true)}
+					>
+						Login
+					</button>
+					<button
+						className={styles['btn-register']}
+						onClick={() => onClickRegisterModal(true)}
+					>
+						Register
+					</button>
+				</>
+			)}
 		</header>
 	)
 }
 
-export default Header;
+export default Header

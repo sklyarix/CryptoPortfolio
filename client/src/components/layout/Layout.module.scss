@@ -1,5 +1,7 @@
 .wrapper {
-	height: 100%;
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
 	max-width: 560px;
 	width: 100%;
 

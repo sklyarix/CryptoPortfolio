@@ -1,18 +1,6 @@
-@import '../../assets/styles/variables';
+@import './variables';
 
-.header{
-	padding: 1.5rem;
-	
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 1rem;
-	
-	width: 100%;
-	border-bottom: 1px solid $white;
-}
-
-.btn-login{
+.btn-gray{
 	height: 3rem;
 	padding: 0 .75rem;
 	color: $white;
@@ -21,7 +9,7 @@
 	border-radius: 1rem;
 }
 
-.btn-register{
+.btn-blue{
 	height: 3rem;
 	padding: 0 .75rem;
 	color: $white;

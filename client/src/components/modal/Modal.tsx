@@ -1,18 +1,31 @@
 import styles from './Modal.module.scss'
 
-const Modal = ({show, closeModal, children}) => {
+const Modal = ({ show, closeModal, title, children }) => {
 	if (!show) return null
 	return (
-		<div>
-			<div className={styles.header}>
-				<button
-				onClick={() => {closeModal(false)}}
-				>
-					X
-				</button>
+		<div className={styles.full}>
+			<div className={styles.wrapper}>
+				<div className={styles.header}>
+					<div className={styles.title}>{title}</div>
+					<button
+						className={styles['btn-close']}
+						onClick={() => {
+							closeModal(false)
+						}}
+					>
+						X
+					</button>
+				</div>
+				{children}
 			</div>
-			{children}
 		</div>
 	)
 }
-export default Modal;
+export default Modal
+
+/*
+
+
+
+{children}
+ */

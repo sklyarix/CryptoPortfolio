@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Convert from './pages/Convert/Convert.tsx'
+import Home from './pages/Home/Home.tsx'
 
 import AuthProvider from './providers/AuthProvider.tsx'
 
@@ -9,13 +11,24 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import './assets/styles/index.scss'
 
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <Home />
+	},
+	{
+		path: '/convert',
+		element: <Convert />
+	}
+])
+
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<AuthProvider>
 			<QueryClientProvider client={queryClient}>
-				<App />
+				<RouterProvider router={router} />
 				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
 		</AuthProvider>

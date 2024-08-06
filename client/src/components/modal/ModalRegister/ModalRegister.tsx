@@ -1,83 +1,69 @@
 import { useState } from 'react'
 import { useAuth } from '../../../hooks/useAuth.tsx'
-import registerService from '../../../services/registerService.tsx';
+import registerService from '../../../services/registerService.tsx'
+import styles from './../Modal.module.scss'
+import Field from './../../../ui/Field/Field.tsx'
 
-
-const ModalRegister = () => {
-
+const ModalRegister = ({ closeModal }) => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-	const { setIsAuth } = useAuth();
-	
-	
+	const [password, setPassword] = useState('')
+	const { setIsAuth } = useAuth()
+
 	const handleSubmit = async e => {
 		e.preventDefault()
-				let user = { name, email, password }
-				const result = await registerService(user)
-				console.log(result)
-				if (result) {
-					setIsAuth(true);
-				} else {
-					console.log('Login failed');
-				}
+		let user = { name, email, password }
+		const result = await registerService(user)
+		console.log(result)
+		if (result) {
+			setIsAuth(true)
+		} else {
+			console.log('Login failed')
+		}
 	}
 	return (
 		<>
-			Modal Register
-			<form onSubmit={handleSubmit}>
-				<label class="">
-					<span class="">Email</span>
-					<div class="">
-						<input
-							class=""
-							name="name"
-							type="text"
-							placeholder="Name"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-						/>
-					</div>
-					</label>
-				<label class="">
-					<span class="">Email</span>
-					<div class="">
-						<input
-							class=""
-							name="email"
-							type="email"
-							placeholder="Email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-					</div>
-					</label>
-				<label class="">
-					<span class="">Password</span>
-					<div class="">
-						<input
-							class=""
-							name="password"
-							type="password"
-							placeholder="Password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-					</label>
-				<button type="submit">Login</button>
+			<form>
+				<div className={styles['wrapper-inputs']}>
+					<Field
+						name='name'
+						placeholder='Name'
+						label='Name'
+						value={name}
+						onChange={setName}
+					/>
+					<Field
+						name='email'
+						placeholder='Email'
+						label='Email'
+						value={email}
+						onChange={setEmail}
+					/>
+					<Field
+						name='password'
+						placeholder='Password'
+						label='Password'
+						value={password}
+						onChange={setPassword}
+					/>
+				</div>
+				<button
+					type='submit'
+					className={styles['btn-blue']}
+					onSubmit={handleSubmit}
+				>
+					Create Account
+				</button>
 			</form>
 		</>
 	)
 }
 export default ModalRegister
 
-
 //import { useQuery } from '@tanstack/react-query'
-	/*
+/*
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['login'],
 		queryFn: LoginService,
 	})
 	33421`*/
-	

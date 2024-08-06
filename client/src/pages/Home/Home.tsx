@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
+
+import Layout from '../../components/layout/Layout.tsx'
 
 const Home = () => {
-	return(
-		<div>
+	return (
+		<Layout>
 			<h1>Home</h1>
-			<Link to={'/convert'}>convert</Link>
-		</div>
+		</Layout>
 	)
 }
 
-export default Home;
+export default Home
+
+//<Link to={'/convert'}>convert</Link>
