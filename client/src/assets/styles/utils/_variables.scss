@@ -1,15 +1,61 @@
 //@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+$default-font: 'Gilroy', sans-serif;
+//&-black
 $black: #000;
-$black--1:rgb(39 39 42/1);
-$black--2:rgb(63 63 70);
+$white: #fff;
+$gray:  #52525B;
+
+
+
+$wnd-radius: 1em;
+
+
+
+
+
+
+
+
+//$wnd: rgb(39 39 42/1);
+//$icon: rgb(113 113 122/1);
+//$icon_hover: rgb(63 63 70/1);
+
+
+
 $yellow: #FFE8AB;
 $pink: #F6DDFF;
 $red: #8d2b3d;
+
+
+
+
+
+
+
+
+$blue: #3B82F6;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 $gray: rgb(82 82 91/1);
-$white: #fff;
-$blue: rgb(59 130 246/1);
+$gray-dark: rgb(63 63 70);
 
-$border-radius-block: 1em;
+$black--1:rgb(39 39 42/1); // wnd
+$gray-light: rgb(113 113 122/1); //icon text
+$black--2:rgb(63 63 70); // on wnd, hover
 
-$default-font: 'Gilroy', sans-serif;
+ */

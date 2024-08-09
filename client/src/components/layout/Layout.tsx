@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useModal } from '../../hooks/useModal.tsx'
 import Header from '../header/Header.tsx'
 import Modal from '../modal/Modal.tsx'
 import ModalLogin from '../modal/ModalLogin/ModalLogin.tsx'
@@ -10,30 +10,25 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-	const [showLoginModal, setShowLoginModal] = useState(false)
-	const [showRegisterModal, setShowRegisterModal] = useState(false)
+	const loginModal = useModal()
+	const registerModal = useModal()
 
 	return (
 		<div className={styles.wrapper}>
-			<Header
-				onClickLoginModal={setShowLoginModal}
-				onClickRegisterModal={setShowRegisterModal}
-			/>
+			<Header loginModal={loginModal} registerModal={registerModal} />
+
 			{children}
-			<Modal
-				show={showLoginModal}
-				closeModal={setShowLoginModal}
-				title={'Login'}
-			>
-				<ModalLogin closeModal={setShowLoginModal} />
-			</Modal>
-			<Modal
-				show={showRegisterModal}
-				closeModal={setShowRegisterModal}
-				title={'Create Account'}
-			>
-				<ModalRegister closeModal={setShowRegisterModal} />
-			</Modal>
+
+			{loginModal.isOpen && (
+				<Modal closeModal={loginModal.closeModal} title='Login'>
+					<ModalLogin closeModal={loginModal.closeModal} />
+				</Modal>
+			)}
+			{registerModal.isOpen && (
+				<Modal closeModal={registerModal.closeModal} title='Register'>
+					<ModalRegister closeModal={registerModal.closeModal} />
+				</Modal>
+			)}
 		</div>
 	)
 }

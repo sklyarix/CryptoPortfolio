@@ -1,19 +1,48 @@
 @import '../utils/variables';
+@import '../utils/mixins';
 
-.btn-gray{
-	height: 3rem;
-	padding: 0 .75rem;
-	color: $white;
-	background-color: $gray;
+button{
 	border: none;
-	border-radius: 1rem;
+	cursor: pointer;
+	background: none;
+	font-size: 1.2rem;
+	
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+	transition-timing-function: cubic-bezier(.4,0,.2,1);
+	transition-duration: .15s;
 }
 
-.btn-blue{
-	height: 3rem;
-	padding: 0 .75rem;
-	color: $white;
-	background-color: $blue;
-	border: none;
-	border-radius: 1rem;
+.btn{
+	
+	&-small{
+		@include flex-center;
+		height: 3rem;
+		padding: 0 .75rem;
+		border-radius: 1rem;
+	}
+	
+	&--icon{
+		
+		&:hover{
+			background-color: lighten($gray, 20%);
+		}
+	}
+	
+	&--gray{
+		color: $white;
+		background-color: $gray;
+		
+		&:hover{
+			background-color: lighten($gray, 20%);
+		}
+	}
+	&--blue{
+		color: $white;
+		background-color: $blue;
+		
+		&:hover{
+			background-color: lighten($blue, 10%);
+		}
+	}
 }
+

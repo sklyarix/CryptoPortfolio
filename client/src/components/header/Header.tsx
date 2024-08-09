@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+
 import { AuthContext } from '../../providers/AuthProvider.tsx'
 import userService from '../../services/userService.tsx'
 import { LuSettings } from 'react-icons/lu'
@@ -6,7 +7,7 @@ import { LuSettings } from 'react-icons/lu'
 import Cookies from 'js-cookie'
 import styles from './Header.module.scss'
 
-const Header = ({ onClickLoginModal, onClickRegisterModal }) => {
+const Header = ({ loginModal, registerModal }) => {
 	const [data, setData] = useState(null)
 	let { isAuth, setIsAuth } = useContext(AuthContext)
 
@@ -27,6 +28,9 @@ const Header = ({ onClickLoginModal, onClickRegisterModal }) => {
 		}
 	}, [isAuth])
 
+	const handleClick = () => {
+		loginModal.openModal()
+	}
 	return (
 		<header className={styles.header}>
 			{isAuth ? (
@@ -38,18 +42,15 @@ const Header = ({ onClickLoginModal, onClickRegisterModal }) => {
 				</>
 			) : (
 				<>
-					<button>
-						<LuSettings />
+					<button className='btn-small btn--icon'>
+						<LuSettings className={styles['icon']} />
 					</button>
-					<button
-						className={styles['btn-login']}
-						onClick={() => onClickLoginModal(true)}
-					>
+					<button className='btn-small btn--gray' onClick={handleClick}>
 						Login
 					</button>
 					<button
-						className={styles['btn-register']}
-						onClick={() => onClickRegisterModal(true)}
+						className='btn-small btn--blue'
+						onClick={() => registerModal.openModal}
 					>
 						Register
 					</button>

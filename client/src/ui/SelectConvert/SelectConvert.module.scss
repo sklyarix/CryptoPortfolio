@@ -8,13 +8,13 @@
 	}
 	
 	&__single-value{
-		color: $black !important;
+		color: black !important;
 	}
 	&__indicator-separator{
 		display: none !important;
 	}
 	&__input-container, &__placeholder{
-		color: $black !important;
+		color: black !important;
 		margin: 0 !important;
 		padding: 0 !important;
 	}
@@ -27,7 +27,7 @@
 	&__indicator{
 		padding: 4px !important;
 		svg{
-			fill: $black;
+			fill: black;
 		}
 	}
 }
