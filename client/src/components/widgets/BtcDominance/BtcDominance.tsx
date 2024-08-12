@@ -1,16 +1,14 @@
 import {
-	Chart as ChartJS,
 	CategoryScale,
+	Chart as ChartJS,
+	Legend,
+	LineElement,
 	LinearScale,
 	PointElement,
-	LineElement,
 	Title,
-	Tooltip,
-	Legend
+	Tooltip
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-
-import { faker } from '@faker-js/faker'
 
 ChartJS.register(
 	CategoryScale,
@@ -22,40 +20,38 @@ ChartJS.register(
 	Legend
 )
 
-export const options = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: 'top' as const
-		},
-		title: {
-			display: true,
-			text: 'Chart.js Line Chart'
-		}
-	}
-}
+const dataTest = [
+	{ timestamp: '1 Aug', btc_dominance: 48.0585 },
+	{ timestamp: '2 Aug', btc_dominance: 49.0585 },
+	{ timestamp: '3 Aug', btc_dominance: 50.0585 },
+	{ timestamp: '4 Aug', btc_dominance: 55.0585 },
+	{ timestamp: '5 Aug', btc_dominance: 38.0585 },
+	{ timestamp: '6 Aug', btc_dominance: 37.0585 },
+	{ timestamp: '7 Aug', btc_dominance: 48.0585 }
+]
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+const labels = dataTest.map(el => el.timestamp)
+const btc_dominance = dataTest.map(el => el.btc_dominance)
 
-export const data = {
+const data = {
 	labels,
 	datasets: [
 		{
-			label: 'Dataset 1',
-			data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-			borderColor: 'rgb(255, 99, 132)',
-			backgroundColor: 'rgba(255, 99, 132, 0.5)'
-		},
-		{
-			label: 'Dataset 2',
-			data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-			borderColor: 'rgb(53, 162, 235)',
-			backgroundColor: 'rgba(53, 162, 235, 0.5)'
+			data: btc_dominance,
+			borderColor: 'rgb(35, 3, 219)'
 		}
 	]
 }
 
+const options = {
+	plugins: {
+		legend: {
+			display: false
+		}
+	}
+}
+
 const BtcDominance = () => {
-	return <Line options={options} data={data} />
+	return <Line data={data} options={options} />
 }
 export default BtcDominance
