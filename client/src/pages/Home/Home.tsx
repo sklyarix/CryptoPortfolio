@@ -12,18 +12,15 @@ const Home = () => {
 	const data = null
 	return (
 		<Layout>
-			<IndexFearGreed />
-			<BtcDominance />
 			<Swiper spaceBetween={25} slidesPerView={2} style={{ marginTop: '30px' }}>
 				<SwiperSlide>
 					<div className={styles.wrapperSlide}>
-						<p>55.36%</p>
+						<BtcDominance />
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className={styles.wrapperSlide}>
-						<p>Unlock of 15.60 M APE - 1.56% of Total Supply</p>
-						<p>~$9.19 M (2.58% of M.Cap)</p>
+						<IndexFearGreed />
 					</div>
 				</SwiperSlide>
 			</Swiper>
