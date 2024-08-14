@@ -1,0 +1,59 @@
+$default-size: 100px;
+
+
+@mixin draw-progress($progress, $color) {
+  .pie {
+    .halfCircle {
+      border-color: $color;
+    }
+
+    .leftSide {
+      transform: rotate($progress * 3.6deg);
+    }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+    } @else {
+      clip-path: inset(auto auto auto auto);
+
+      .rightSide {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.wrapper {
+  width: 100px;
+  height: 100px;
+  
+  float: left;
+  margin: 15px;
+  position: relative;
+}
+
+.pie {
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 $default-size $default-size calc($default-size / 2));
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.halfCircle {
+  width: 100%;
+  height: 100%;
+  border: 10px solid #3498db;
+  clip-path: inset(0 50px 0 0);
+  border-radius: 50%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.progress45 {
+    @include draw-progress(45, #1abc9c);
+}
+
+//clip: rect(0, 0.5em, 1em, 0);

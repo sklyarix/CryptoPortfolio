@@ -5,13 +5,14 @@ import Table from '../../components/table/Table.tsx'
 import BtcDominance from '../../components/widgets/BtcDominance/BtcDominance.tsx'
 
 import 'swiper/css'
+import IndexFearGreed from '../../components/widgets/IndexFearGreed/IndexFearGreed.tsx'
 import styles from './Home.module.scss'
 
 const Home = () => {
 	const data = null
 	return (
 		<Layout>
-			<indexFearGreed />
+			<IndexFearGreed />
 			<BtcDominance />
 			<Swiper spaceBetween={25} slidesPerView={2} style={{ marginTop: '30px' }}>
 				<SwiperSlide>
