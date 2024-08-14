@@ -1,0 +1,116 @@
+@import '../../assets/styles/utils/variables';
+
+.section {
+	padding: 0;
+}
+
+.main {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
+
+	@media (max-width: $breakpoint-tablet-xl) {
+		flex-direction: column;
+	}
+}
+.leftWidgets {
+	height: 100%;
+	display: flex;
+	flex-basis: 30%;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	@media (max-width: $breakpoint-tablet-xl) {
+		width: 100%;
+		flex-basis: 100%;
+	}
+
+	.balance {
+		font-size: 1.8em;
+		font-weight: 600;
+	}
+
+	.infoText {
+		padding: 0.3rem 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.title {
+			margin-right: 1rem;
+			white-space: nowrap;
+		}
+	}
+}
+.rightChart {
+	height: 100%;
+	flex-basis: 70%;
+
+	@media (max-width: $breakpoint-tablet-xl) {
+		width: 100%;
+		flex-basis: 100%;
+	}
+}
+.wnd {
+	height: 100%;
+	width: 100%;
+	padding: 1.5rem;
+	border: 0.1rem solid $white;
+	border-radius: $wnd-radius;
+}
+.perfomance {
+	.topGainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&Left {
+			display: flex;
+			align-items: flex-start;
+
+			.icon {
+				width: 50px;
+				height: 50px;
+				img {
+					object-fit: contain;
+				}
+			}
+			.infoCoin {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+
+				.title {
+					color: lighten($gray, 40%);
+					line-height: 1;
+					font-size: 0.8em;
+					font-weight: 600;
+				}
+
+				.nameCoin {
+					font-weight: 600;
+					line-height: 1;
+				}
+			}
+		}
+		&Right {
+		}
+	}
+}
+
+.list {
+	margin-top: 2rem;
+}
+.history {
+	margin-top: 2rem;
+}
+.percent {
+	display: inline-block;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+
+	line-height: 1;
+	font-size: 0.7em;
+	padding: 0.5em;
+	border-radius: 0.5rem;
+}

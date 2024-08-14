@@ -10,11 +10,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import './assets/styles/index.scss'
+import Profile from './pages/Profile/Profile.tsx'
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Home />
+	},
+	{
+		path: '/profile',
+		element: <Profile />
 	},
 	{
 		path: '/convert',

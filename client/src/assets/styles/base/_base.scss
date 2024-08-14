@@ -1,6 +1,6 @@
 @import '../utils/variables';
 
-html{
+html {
 	font-size: 14px;
 }
 
@@ -14,8 +14,31 @@ body {
 	position: relative;
 	line-height: 1.65;
 	overflow-x: hidden;
+
+	@media (max-width: $breakpoint-desktop-xl) {
+		font-size: 1.4rem;
+	}
+	@media (max-width: $breakpoint-tablet-xl) {
+		font-size: 1.2rem;
+	}
+	@media (max-width: $breakpoint-mobile-xl) {
+		font-size: 1rem;
+	}
 }
 
 img {
 	max-width: 100%;
+}
+
+.minusBg {
+	background-color: $red;
+}
+.minusColor {
+	color: $red;
+}
+.plusBg {
+	background-color: $green;
+}
+.plusColor {
+	color: $green;
 }
