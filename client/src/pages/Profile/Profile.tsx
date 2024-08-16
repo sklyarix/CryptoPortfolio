@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 import Layout from '../../components/layout/Layout'
+import { LuRocket } from 'react-icons/lu'
+
 import styles from './Profile.module.scss'
 
 const Profile = () => {
@@ -14,7 +16,7 @@ const Profile = () => {
 							<div className={styles.balance}>{balance}</div>
 							<div className={styles.infoText}>
 								<div className={styles.title}>Total Invested:</div>
-								<div>
+								<div className={styles.infoTextRight}>
 									<span
 										className={classNames(styles.percent, {
 											minusBg: totalProfitpercent < 0,
@@ -35,7 +37,7 @@ const Profile = () => {
 							</div>
 							<div className={styles.infoText}>
 								<div className={styles.title}>Total profit:</div>
-								<div>
+								<div className={styles.infoTextRight}>
 									<span
 										className={classNames(styles.percent, {
 											minusBg: totalProfitpercent < 0,
@@ -56,20 +58,70 @@ const Profile = () => {
 							</div>
 						</div>
 						<div className={classNames(styles.wnd, styles.perfomance)}>
-							<div className={classNames(styles.wnd, styles.topGainer)}>
-								<div className={styles.topGainerLeft}>
-									<div className={styles.icon}>
+							<div
+								className={classNames(
+									styles.wnd,
+									styles.perfomanceItem,
+									styles.plus
+								)}
+							>
+								<div className={styles.perfomanceItemLeft}>
+									<div className={styles.imgCoin}>
 										<img
 											src='https://static.images.dropstab.com/images/notcoin.png'
 											alt='NOT'
 										/>
+										<div className={styles.wrapIcon}>
+											<LuRocket className={styles.icon} />
+										</div>
 									</div>
 									<div className={styles.infoCoin}>
 										<div className={styles.title}>Top Gainer</div>
 										<div className={styles.nameCoin}>NOT</div>
 									</div>
 								</div>
-								<div className={styles.topGainerRight}>
+								<div className={styles.perfomanceItemRight}>
+									<span
+										className={classNames({
+											minusColor: totalProfitpercent < 0,
+											plusColor: totalProfitpercent >= 0
+										})}
+									>
+										$95.70
+									</span>
+									<span
+										className={classNames(styles.percent, {
+											minusBg: totalProfitpercent < 0,
+											plusBg: totalProfitpercent >= 0
+										})}
+									>
+										{totalProfitpercent}%
+									</span>
+								</div>
+							</div>
+							<div
+								className={classNames(
+									styles.wnd,
+									styles.perfomanceItem,
+									styles.minus
+								)}
+							>
+								<div className={styles.perfomanceItemLeft}>
+									<div className={styles.imgCoin}>
+										<img
+											src='https://static.images.dropstab.com/images/notcoin.png'
+											alt='NOT'
+										/>
+										<div className={styles.wrapIcon}>
+											<LuRocket className={styles.icon} />
+										</div>
+									</div>
+									<div className={styles.infoCoin}>
+										<div className={styles.title}>Top Loser</div>
+										<div className={styles.nameCoin}>NOT</div>
+									</div>
+								</div>
+								<div className={styles.perfomanceItemRight}>
 									<span
 										className={classNames({
 											minusColor: totalProfitpercent < 0,
@@ -91,7 +143,7 @@ const Profile = () => {
 						</div>
 					</div>
 					<div className={styles.rightChart}>
-						<div className={styles.wnd}>Graphic</div>
+						<div className={styles.wnd}>btc</div>
 					</div>
 				</div>
 				<div className={styles.list}>
