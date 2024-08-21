@@ -1,4 +1,4 @@
-import { IoIosArrowDown, IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowBack, IoIosArrowDown } from 'react-icons/io'
 
 const Header = () => {
 	const bool = true

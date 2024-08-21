@@ -1,10 +1,10 @@
 import Layout from './components/layout/Layout.tsx'
-import Convert from './pages/Convert/Convert.tsx'
+import Home from './pages/Home/Home.tsx'
 
 function App() {
 	return (
 		<Layout>
-			<Convert />
+			<Home />
 		</Layout>
 	)
 }
