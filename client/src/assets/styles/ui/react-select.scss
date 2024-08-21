@@ -1,0 +1,36 @@
+.currency-select{
+	&__control{
+		padding: 5px;
+		border: 1px solid transparent !important;
+		background: transparent !important;
+		box-shadow: none !important;
+		
+		&:hover{
+			border: 1px solid rgb(38 38 38)!important;
+		}
+	}
+	
+	&__single-value{
+		color: black !important;
+	}
+	&__indicator-separator{
+		display: none !important;
+	}
+	&__input-container, &__placeholder{
+		color: black !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	&__placeholder{
+		font-weight: 500;
+	}
+	&__value-container{
+		padding: 0 !important;
+	}
+	&__indicator{
+		padding: 4px !important;
+		svg{
+			fill: black;
+		}
+	}
+}
