@@ -2,6 +2,7 @@ import { LuArrowDownUp } from 'react-icons/lu'
 
 import Select from 'react-select'
 
+// @ts-ignore
 import { TokenBTC } from '@web3icons/react'
 
 import styles from './Convert.module.scss'
@@ -54,7 +55,7 @@ const Convert = () => {
 			</div>
 			<div className='p-5 flex items-center justify-between w-full max-w-lg bg-neutral-700 rounded-xl'>
 				<div>
-					<div className='font-semiboldbold text-neutral-200'>Exchange fee</div>
+					<div className='font-semibold  text-neutral-200'>Exchange fee</div>
 					<div className='text-neutral-400'>Read terms and conditions</div>
 				</div>
 				<div className='font-bold text-neutral-200'>40$</div>
