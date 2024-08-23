@@ -11,12 +11,30 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as RoutesDataImport } from './routes/routes.data'
+import { Route as WalletImport } from './routes/wallet'
+import { Route as PreviewImport } from './routes/preview'
+import { Route as ConvertImport } from './routes/convert'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const RoutesDataRoute = RoutesDataImport.update({
-  path: '/routes/data',
+const WalletRoute = WalletImport.update({
+  path: '/wallet',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PreviewRoute = PreviewImport.update({
+  path: '/preview',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ConvertRoute = ConvertImport.update({
+  path: '/convert',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const IndexRoute = IndexImport.update({
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -24,11 +42,32 @@ const RoutesDataRoute = RoutesDataImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/routes/data': {
-      id: '/routes/data'
-      path: '/routes/data'
-      fullPath: '/routes/data'
-      preLoaderRoute: typeof RoutesDataImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/convert': {
+      id: '/convert'
+      path: '/convert'
+      fullPath: '/convert'
+      preLoaderRoute: typeof ConvertImport
+      parentRoute: typeof rootRoute
+    }
+    '/preview': {
+      id: '/preview'
+      path: '/preview'
+      fullPath: '/preview'
+      preLoaderRoute: typeof PreviewImport
+      parentRoute: typeof rootRoute
+    }
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletImport
       parentRoute: typeof rootRoute
     }
   }
@@ -36,7 +75,12 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ RoutesDataRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  ConvertRoute,
+  PreviewRoute,
+  WalletRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -46,11 +90,23 @@ export const routeTree = rootRoute.addChildren({ RoutesDataRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/routes/data"
+        "/",
+        "/convert",
+        "/preview",
+        "/wallet"
       ]
     },
-    "/routes/data": {
-      "filePath": "routes.data.ts"
+    "/": {
+      "filePath": "index.tsx"
+    },
+    "/convert": {
+      "filePath": "convert.tsx"
+    },
+    "/preview": {
+      "filePath": "preview.tsx"
+    },
+    "/wallet": {
+      "filePath": "wallet.tsx"
     }
   }
 }

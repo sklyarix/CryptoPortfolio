@@ -7,7 +7,7 @@ import { FaArrowTrendUp } from 'react-icons/fa6'
 // @ts-ignore
 import { TokenIcon } from '@web3icons/react'
 
-const Home = () => {
+const Wallet = () => {
 	return (
 		<div>
 			<div className='p-5 w-full max-w-lg bg-teal-300	rounded-xl text-neutral-800'>
@@ -80,4 +80,4 @@ const Home = () => {
 		</div>
 	)
 }
-export default Home
+export default Wallet
