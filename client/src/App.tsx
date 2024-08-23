@@ -1,10 +1,12 @@
-//import Layout from './components/layout/Layout.tsx'
-//import Layout from './components/layout/Layout.tsx'
-//import Home from './pages/Home/Home.tsx'
-import Preview from './pages/Preview/Preview.tsx'
+import { createRouter } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
+
+const router = createRouter({
+	routeTree
+})
 
 function App() {
-	return <Preview />
+	return
 }
 
 /* routing */
