@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { FaArrowRight } from 'react-icons/fa6'
 
 const Preview = () => {
@@ -18,9 +19,12 @@ const Preview = () => {
 					Top fully secure crypto wallet
 					<br /> and exchanger
 				</div>
-				<button className='absolute right-2.5 bottom-2.5 block w-auto ml-auto p-6 bg-neutral-700 rounded-full hover:bg-neutral-600 focus:outline-none'>
+				<Link
+					className='absolute right-2.5 bottom-2.5 block w-auto ml-auto p-6 bg-neutral-700 rounded-full hover:bg-neutral-600 focus:outline-none'
+					to='/auth'
+				>
 					<FaArrowRight />
-				</button>
+				</Link>
 			</div>
 		</div>
 	)

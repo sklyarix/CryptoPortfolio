@@ -1,31 +1,14 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { useAuth } from '../hooks/useAuth.tsx'
+import Preview from '../pages/Preview/Preview.tsx'
 
 export const Route = createFileRoute('/')({
-	beforeLoad: () => {
-		if (true) {
-			console.log('go')
-		} else {
-			console.log('else')
-		}
-	}
-})
-
-/*
-// src/routes/_authenticated.tsx
-export const Route = createFileRoute('/')({
-	beforeLoad: async ({ location }) => {
-		if (!isAuthenticated()) {
+	beforeLoad: async () => {
+		if (useAuth) {
 			throw redirect({
-				to: '/login',
-				search: {
-					// Use the current location to power a redirect after login
-					// (Do not use `router.state.resolvedLocation` as it can
-					// potentially lag behind the actual current location)
-					redirect: location.href,
-				},
+				to: '/wallet'
 			})
 		}
 	},
+	component: Preview
 })
-
- */

@@ -6,10 +6,11 @@ import { FaArrowTrendUp } from 'react-icons/fa6'
 
 // @ts-ignore
 import { TokenIcon } from '@web3icons/react'
+import Layout from '../../components/layout/Layout.tsx'
 
 const Wallet = () => {
 	return (
-		<div>
+		<Layout>
 			<div className='p-5 w-full max-w-lg bg-teal-300	rounded-xl text-neutral-800'>
 				<div className=''>Total estimated value</div>
 				<div className='font-bold text-2xl'>
@@ -77,7 +78,7 @@ const Wallet = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Layout>
 	)
 }
 export default Wallet

@@ -11,30 +11,30 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as WalletImport } from './routes/wallet'
-import { Route as PreviewImport } from './routes/preview'
-import { Route as ConvertImport } from './routes/convert'
+import { Route as AuthImport } from './routes/auth'
 import { Route as IndexImport } from './routes/index'
+import { Route as WalletIndexImport } from './routes/wallet/index'
+import { Route as WalletConvertImport } from './routes/wallet/convert'
 
 // Create/Update Routes
 
-const WalletRoute = WalletImport.update({
-  path: '/wallet',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PreviewRoute = PreviewImport.update({
-  path: '/preview',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ConvertRoute = ConvertImport.update({
-  path: '/convert',
+const AuthRoute = AuthImport.update({
+  path: '/auth',
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WalletIndexRoute = WalletIndexImport.update({
+  path: '/wallet/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WalletConvertRoute = WalletConvertImport.update({
+  path: '/wallet/convert',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -49,25 +49,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/convert': {
-      id: '/convert'
-      path: '/convert'
-      fullPath: '/convert'
-      preLoaderRoute: typeof ConvertImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
     }
-    '/preview': {
-      id: '/preview'
-      path: '/preview'
-      fullPath: '/preview'
-      preLoaderRoute: typeof PreviewImport
+    '/wallet/convert': {
+      id: '/wallet/convert'
+      path: '/wallet/convert'
+      fullPath: '/wallet/convert'
+      preLoaderRoute: typeof WalletConvertImport
       parentRoute: typeof rootRoute
     }
-    '/wallet': {
-      id: '/wallet'
+    '/wallet/': {
+      id: '/wallet/'
       path: '/wallet'
       fullPath: '/wallet'
-      preLoaderRoute: typeof WalletImport
+      preLoaderRoute: typeof WalletIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -77,9 +77,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  ConvertRoute,
-  PreviewRoute,
-  WalletRoute,
+  AuthRoute,
+  WalletConvertRoute,
+  WalletIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -91,22 +91,22 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/convert",
-        "/preview",
-        "/wallet"
+        "/auth",
+        "/wallet/convert",
+        "/wallet/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/convert": {
-      "filePath": "convert.tsx"
+    "/auth": {
+      "filePath": "auth.tsx"
     },
-    "/preview": {
-      "filePath": "preview.tsx"
+    "/wallet/convert": {
+      "filePath": "wallet/convert.tsx"
     },
-    "/wallet": {
-      "filePath": "wallet.tsx"
+    "/wallet/": {
+      "filePath": "wallet/index.tsx"
     }
   }
 }
