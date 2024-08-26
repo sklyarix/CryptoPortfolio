@@ -8,8 +8,10 @@
     "start-ts": "yarn tsc -w"
   },
   "dependencies": {
+    "@prisma/client": "^5.18.0",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "prisma": "^5.18.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
