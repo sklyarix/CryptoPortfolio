@@ -1,15 +1,32 @@
-import express from "express";
-import dotenv from "dotenv";
+import { PrismaClient } from '@prisma/client'
+import dotenv from 'dotenv'
+import express from 'express'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
-const port = process.env.HOST_PORT || 4000;
+const prisma = new PrismaClient()
 
-app.get("/", (req, res) => {
-  res.json("Hello World - 1!");
-});
+const app = express()
+const port = process.env.HOST_PORT || 4000
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+async function main() {
+	app.get('/', async (req, res) => {
+		const allUsers = await prisma.user.findMany()
+
+		res.json(allUsers)
+	})
+
+	app.listen(port, () => {
+		console.log(`Example app listening on port ${port}`)
+	})
+}
+
+main()
+	.then(async () => {
+		await prisma.$disconnect()
+	})
+	.catch(async e => {
+		console.error(e)
+		await prisma.$disconnect()
+		process.exit(1)
+	})
